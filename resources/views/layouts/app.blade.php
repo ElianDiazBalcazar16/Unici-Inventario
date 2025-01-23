@@ -21,12 +21,14 @@
 
 
     <!-- General CSS Files -->
+    
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap-social/bootstrap-social.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap-social/bootstrap-social.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}"> 
+   
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -39,13 +41,15 @@
 
         <section class="ml-[0%] w-screen">
             <!-- Page Heading -->
-            {{-- @isset($header)
-            <header class="bg-black shadow dark:bg-gray-800">
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-            @endisset --}}
+            {{-- 
+                @isset($header)
+                <header class="bg-black shadow dark:bg-gray-800">
+                    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+                @endisset 
+            --}}
 
             <!-- Page Content -->
             <div id="app">
@@ -264,7 +268,7 @@
                                 <a href="#" data-toggle="dropdown"
                                     class="flex nav-link dropdown-toggle nav-link-lg nav-link-user">
                                     {{-- <img alt="image" src="assets/img/avatar/avatar-1.png" class="mr-1 rounded-circle"> --}}
-                                    <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                                    <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <div class="dropdown-title">Logged in 5 min ago</div>
@@ -294,7 +298,7 @@
                                     style="margin-left: 0%;">
                                 </div>
                                 <div class="pl-1 sidebar-brand sidebar-brand-sm">
-                                    <a href="index.html"> 
+                                    <a href="{{ route('dashboard') }}"> 
                                         <img src="{{ asset('img/logo512.png') }}" alt="logo" width="140%"
                                         class="" style="margin-left: 0%;">
                                     </a>
@@ -442,14 +446,14 @@
             </div>
         </section>
     </div>
-    <!-- General JS Scripts -->
+    <!-- General JS Scripts --> 
     <script src="{{ asset('backend/assets/modules/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/popper.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/tooltip.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/moment.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/stisla.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/stisla.js') }}"></script> 
 
     <!-- JS Libraies -->
     <script src="{{ asset('backend/assets/modules/simple-weather/jquery.simpleWeather.min.js') }}"></script>
@@ -457,14 +461,15 @@
     <script src="{{ asset('backend/assets/modules/jqvmap/dist/jquery.vmap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
-    <script src="{{ asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script> 
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('backend/assets/js/page/index-0.js') }}"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('backend/assets/js/scripts.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/custom.js') }}"></script> 
+   
 </body>
 
 </html>
