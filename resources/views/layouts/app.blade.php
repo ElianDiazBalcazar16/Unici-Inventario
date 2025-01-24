@@ -307,6 +307,9 @@
                                 <li style="color: #192f59;"><a class="nav-link" href="{{ route('dashboard') }}"
                                         style="color: #192f59;"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
                                 <li class="dropdown">
+                                <li style="color: #192f59;"><a class="nav-link" href="{{ route('Gestion') }}"
+                                        style="color: #192f59;"><i class="fas fa-home"></i> <span>Gestión de usuarios</span></a></li>
+                                <li class="dropdown">
                                 <li class="dropdown">
                                     <a href="#" class="nav-link has-dropdown" href="{{ route('General.index') }}"
                                         style="color: #192f59;"><i class="fas fa-th-large"></i>
