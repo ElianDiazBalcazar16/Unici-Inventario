@@ -2,3 +2,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @import "style.css";
+@import "style.css.map";
+@import "../css/skins/reverse.css";
+@import "../css/skins/reverse.css.map";
+@import "style.min.css";
+@import "style.min.css.map";
+@import "components.css";
+@import "components.css.map";
+@import "components.min.css";
+@import "components.min.css.map";
+@import "custom.css";
+@import "custom.css.map"; */
