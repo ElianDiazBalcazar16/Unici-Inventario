@@ -1,37 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <div class="container">
-    <h1>Detalles del Inventario</h1>
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="{{ asset('storage/' . $Datos->imagen) }}" alt="Imagen del bien" class="mb-3 img-fluid">
-                </div>
-                <div class="col-md-6">
-                    <p><strong>Código QR:</strong> 
-                        <img src="{{ asset('storage/' . $Datos->codigo_qr) }}" alt="Código QR">
-                    </p>
-                    <p><strong>Clave del Inventario:</strong> {{ $Datos->IdNomenclatura }}</p>
-                    <p><strong>Campus:</strong> {{ $Datos->Campus }}</p>
-                    <p><strong>Área:</strong> {{ $Datos->Area }}</p>
-                    <p><strong>Responsable del Bien:</strong> {{ $Datos->ResponsableArea }}</p>
-                    <p><strong>Responsable del Bien:</strong> {{ $Datos->ResponsableBien }}</p>
-                    <p><strong>Nombre del Bien:</strong> {{ $Datos->Bien }}</p>
-                    <p><strong>Descripción:</strong> {{ $Datos->descripcion }}</p>
-                    <p><strong>Marca:</strong> {{ $Datos->marca }}</p>
-                    <p><strong>Modelo:</strong> {{ $Datos->modelo }}</p>
-                    <p><strong>Número de Serie:</strong> {{ $Datos->numero_serie }}</p>
-                    <p><strong>Estado:</strong> {{ $Datos->estado }}</p>
-                    <p><strong>Fecha de Adquisición:</strong> {{ $Datos->fecha_adquisicion }}</p>
-                    <p><strong>Precio:</strong> ${{ number_format($Datos->precio, 2) }}</p>
-                </div>
-            </div>
+<div class="main-content">
+    <section class="section">
+        <h2 class="p-4 text-2xl font-semibold text-black">Vista detallada</h2>
+        <div class="p-3 mx-2 mb-2 bg-white border-2 rounded-lg border-slate-300" >
+            <p class="text-base font-medium text-black">Codigo de barras</p>
+            <h1 class="mb-2">{{ $Datos->CodigoDeBarras }}</h1>
+            <p class="text-base font-medium text-black">Codigo</p>
+            <h1 class="mb-2">{{ $Datos->IdNomenclatura }}</h1>
+            <p class="text-base font-medium text-black">Campus</p>
+            <h1 class="mb-2">{{ $Datos->Campus }}</h1>
+            <p class="text-base font-medium text-black">Area</p>
+            <h1 class="mb-2">{{ $Datos->Area }}</h1>
+            <p class="text-base font-medium text-black">Responsable del area</p>
+            <h1 class="mb-2">{{ $Datos->ResponsableArea }}</h1>
+            <p class="text-base font-medium text-black">Bien</p>
+            <h1 class="mb-2">{{ $Datos->Bien }}</h1>
+            <p class="text-base font-medium text-black">Responsable del Bien</p>
+            <h1 class="mb-2">{{ $Datos->ResponsableBien }}</h1>
+            <p class="text-base font-medium text-black">Marca</p>
+            <h1 class="mb-2">{{ $Datos->Marca }}</h1>
+            <p class="text-base font-medium text-black">Modelo</p>
+            <h1 class="mb-2">{{ $Datos->Modelo }}</h1>
+            <p class="text-base font-medium text-black">Color</p>
+            <h1 class="mb-2">{{ $Datos->Color }}</h1>
+            <p class="text-base font-medium text-black">Numero de serie</p>
+            <h1 class="mb-2">{{ $Datos->NumSerie }}</h1>
+            <p class="text-base font-medium text-black">Numero de SAT</p>
+            <h1 class="mb-2">{{ $Datos->Sat }}</h1>
+            <p class="text-base font-medium text-black">Fecha</p>
+            <h1 class="mb-2">{{ $Datos->Fecha }}</h1>
+            <p class="text-base font-medium text-black">Precio de compra</p>
+            <h1 class="mb-2">{{ $Datos->Precio }}</h1>
+            <p class="text-base font-medium text-black">Codigo Fiscal</p>
+            <h1 class="mb-2">{{ $Datos->CodigoCFiscal }}</h1>
+            <p class="text-base font-medium text-black">Estado actual</p>
+            <h1 class="mb-2">{{ $Datos->Estado }}</h1>
+            <p class="text-base font-medium text-black">Descripcion</p>
+            <h1 class="mb-2">{{ $Datos->Descripcion }}</h1>
+            <p class="text-base font-medium text-black">observaciones</p>
+            <h1 class="mb-2">{{ $Datos->Observaciones }}</h1>
+            <p class="text-base font-medium text-black">Factura</p>
+            <h1 class="mb-2">{{ $Datos->Factura }}</h1>
+            <p class="text-base font-medium text-black">Imagen</p>
+            @if (isset($Datos->Imagen) && $Datos->Imagen)
+                <img src="{{ $Datos->Imagen }}" alt="Imagen del Inventario" style="max-width: 100%; height: auto;">
+            @else
+                <p>No hay imagen disponible</p>
+            @endif
+            <p class="text-base font-medium text-black">Cantidad</p>
+            <h1 class="mb-2">{{ $Datos->Cantidad }}</h1>
+            <p class="text-base font-medium text-black">unidad de medida</p>
+            <h1 class="mb-2">{{ $Datos->Medida }}</h1>
         </div>
-    </div>
-    <a href="{{ route('inventario') }}" class="mt-3 btn btn-primary">Regresar</a>
-</div> --}}
-
+    </section>
+</div>
 
 @endsection

@@ -21,14 +21,13 @@
 
 
     <!-- General CSS Files -->
-    
+
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap-social/bootstrap-social.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap-social/bootstrap-social.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}"> 
-   
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -41,14 +40,14 @@
 
         <section class="ml-[0%] w-screen">
             <!-- Page Heading -->
-            {{-- 
+            {{--
                 @isset($header)
-                <header class="bg-black shadow dark:bg-gray-800">
-                    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-                @endisset 
+                    <header class="bg-black shadow dark:bg-gray-800">
+                        <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endisset
             --}}
 
             <!-- Page Content -->
@@ -267,7 +266,8 @@
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown"
                                     class="flex nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                    {{-- <img alt="image" src="assets/img/avatar/avatar-1.png" class="mr-1 rounded-circle"> --}}
+                                    {{-- <img alt="image" src="assets/img/avatar/avatar-1.png"
+                                        class="mr-1 rounded-circle"> --}}
                                     <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
@@ -295,104 +295,123 @@
                             <div class="grid w-full h-20 pt-5 place-content-center">
                                 <div class="pl-20 sidebar-brand">
                                     <img src="{{ asset('img/unici.png') }}" alt="logo" width="50%" class=""
-                                    style="margin-left: 0%;">
+                                        style="margin-left: 0%;">
                                 </div>
                                 <div class="pl-1 sidebar-brand sidebar-brand-sm">
-                                    <a href="{{ route('dashboard') }}"> 
-                                        <img src="{{ asset('img/logo512.png') }}" alt="logo" width="140%"
-                                        class="" style="margin-left: 0%;">
+                                    <a href="{{ route('dashboard') }}">
+                                        <img src="{{ asset('img/logo512.png') }}" alt="logo" width="140%" class="" style="margin-left: 0%;">
                                     </a>
                                 </div>
                             </div>
                             <ul class="sidebar-menu">
-                                <br> 
-                                    <br>
+                                <br>
+                                <br>
                                 <li class="menu-header">Sistema de Inventario</li>
-                                <li style="color: #192f59;"><a class="nav-link" href="{{ route('dashboard') }}"
-                                        style="color: #192f59;"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
+                                <li style="color: #192f59;">
+                                    <a class="nav-link" href="{{ route('dashboard') }}" style="color: #192f59;">
+                                        <i class="fas fa-home"></i>
+                                        <span>Inicio</span>
+                                    </a>
+                                </li>
                                 <li class="dropdown">
                                 <li class="dropdown">
                                     <a href="#" class="nav-link has-dropdown" href="{{ route('General.index') }}"
-                                        style="color: #192f59;"><i class="fas fa-th-large"></i>
-                                        <span>Inventario</span></a>
+                                        style="color: #192f59;">
+                                        <i class="fas fa-th-large"></i>
+                                        <span>Inventario</span>
+                                    </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>General</a></li>
-
-
-
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>Papeleria</a></li>
-
-
-
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>Souvenirs</a></li>
-
-
-
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>Publicidad</a></li>
-
-
-
-
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>Limpieza</a></li>
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                General
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                Papeleria
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                Souvenirs
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                Publicidad
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                Limpieza
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 
-
-                                </li>
-
                                 <li class="dropdown">
                                     <a href="#" class="nav-link has-dropdown" href="{{ route('General.index') }}"
-                                        style="color: #192f59;"><i class="fas fa-th-large"></i> <span>Gestión de
-                                            Productos</span></a>
+                                        style="color: #192f59;">
+                                        <i class="fas fa-th-large"></i>
+                                        <span>Gestión de Productos</span>
+                                    </a>
 
                                     <ul class="dropdown-menu">
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>Producto / Bien</a></li>
-
-
-
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>Categorías</a></li>
-
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                Producto / Bien
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                Categorías
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 
-
+                                <li style="color: #192f59;">
+                                    <a class="nav-link" href="{{ route('dashboard') }}" style="color: #192f59;">
+                                        <i class="fas fa-home"></i>
+                                        <span>Proveedores</span>
+                                    </a>
                                 </li>
 
-
-
-                                <li style="color: #192f59;"><a class="nav-link" href="{{ route('dashboard') }}"
-                                        style="color: #192f59;"><i class="fas fa-home"></i> <span>Proveedores</span></a>
+                                <li style="color: #192f59;">
+                                    <a class="nav-link" href="{{ route('dashboard') }}" style="color: #192f59;">
+                                        <i class="fas fa-home"></i>
+                                        <span>Informes / Reportes</span>
+                                    </a>
                                 </li>
-
-
-                                <li style="color: #192f59;"><a class="nav-link" href="{{ route('dashboard') }}"
-                                        style="color: #192f59;"><i class="fas fa-home"></i> <span>Informes /
-                                            Reportes</span></a></li>
-
-
-
-
 
                                 <li class="dropdown">
                                     <a href="#" class="nav-link has-dropdown" href="{{ route('General.index') }}"
-                                        style="color: #192f59;"><i class="fas fa-th-large"></i>
-                                        <span>Configuración</span></a>
+                                        style="color: #192f59;">
+                                        <i class="fas fa-th-large"></i>
+                                        <span>Configuración</span>
+                                    </a>
 
                                     <ul class="dropdown-menu">
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>Campus</a></li>
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                Campus
+                                            </a>
+                                        </li>
 
-
-
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>Áreas</a></li>
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                Áreas
+                                            </a>
+                                        </li>
 
                                         <li><a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}"><i
                                                     class="fas fa-pencil-ruler"></i>Responsables</a></li>
@@ -400,45 +419,46 @@
                                     </ul>
                                 </li>
 
-
+                                <li style="color: #192f59;">
+                                    <a class="nav-link" href="{{ route('dashboard') }}" style="color: #192f59;">
+                                        <i class="fas fa-home"></i>
+                                        <span>Lector QR</span>
+                                    </a>
                                 </li>
-
-                                <li style="color: #192f59;"><a class="nav-link" href="{{ route('dashboard') }}"
-                                        style="color: #192f59;"><i class="fas fa-home"></i> <span>Lector QR</span></a>
-                                </li>
-
-
-
-
 
                                 <li class="dropdown">
                                     <a href="#" class="nav-link has-dropdown" href="{{ route('General.index') }}"
-                                        style="color: #192f59;"><i class="fas fa-th-large"></i> <span>Cerrar
-                                            Sesión</span></a>
-
+                                        style="color: #192f59;">
+                                        <i class="fas fa-th-large"></i>
+                                        <span>Cerrar Sesión</span>
+                                    </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="nav-link beep beep-sidebar" href="{{ route('profile.edit') }}"><i
-                                                    class="fas fa-pencil-ruler"></i>Perfil</a></li>
+                                        <li>
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('profile.edit') }}">
+                                                <i class="fas fa-pencil-ruler"></i>
+                                                Perfil
+                                            </a>
+                                        </li>
 
 
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
-                                            <li><a class="nav-link beep beep-sidebar" href="{{route('logout') }}"><i
-                                                        class="fas fa-pencil-ruler" onclick="event.preventDefault();
-                                                                    this.closest('form').submit();"></i>Cerrar
-                                                    Sesión</a></li>
+                                            <li>
+                                                <a class="flex flex-row beep beep-sidebar" href="{{route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                 this.closest('form').submit();">
+                                                    <i class="fas fa-pencil-ruler"></i>
+                                                    <p>
+                                                        Cerrar Sesión
+                                                    </p>
+                                                </a>
+                                            </li>
                                         </form>
-
-
-
                                     </ul>
                                 </li>
-
-
-                                </li>
-
-
-                    </div>
+                                
+                            </div>
+                        </aside>
                     <div class="relative">
                         @yield('content')
                     </div>
@@ -446,14 +466,14 @@
             </div>
         </section>
     </div>
-    <!-- General JS Scripts --> 
+    <!-- General JS Scripts -->
     <script src="{{ asset('backend/assets/modules/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/popper.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/tooltip.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/moment.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/stisla.js') }}"></script> 
+    <script src="{{ asset('backend/assets/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
     <script src="{{ asset('backend/assets/modules/simple-weather/jquery.simpleWeather.min.js') }}"></script>
@@ -461,15 +481,15 @@
     <script src="{{ asset('backend/assets/modules/jqvmap/dist/jquery.vmap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
-    <script src="{{ asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script> 
+    <script src="{{ asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('backend/assets/js/page/index-0.js') }}"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('backend/assets/js/scripts.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/custom.js') }}"></script> 
-   
+    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+
 </body>
 
 </html>
