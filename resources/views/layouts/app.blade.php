@@ -366,7 +366,7 @@
 
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="nav-link beep beep-sidebar" href="{{ route('General.index') }}">
+                                            <a class="nav-link beep beep-sidebar" href="{{ route('Bien.index') }}">
                                                 <i class="fas fa-pencil-ruler"></i>
                                                 Producto / Bien
                                             </a>

@@ -3,38 +3,84 @@
 @section('content')
 <!-- Contenido principal -->
 
+
 <div class="main-content">
     <section class="section">
+        
+        <div class="py-3 mt-4 mb-4 min-w-[400px] px-5 rounded-lg bg-slate-100 border-2 border-sky-400">
+            <h3 class="pb-4 text-2xl font-bold text-center text-sky-700">
+                Nuevo elemento
+            </h3>
+            <form action="{{ route('createEntrada') }}" method="POST"       enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="flex gap-8 mb-3 place-content-center">
+                    <div>
+                        <h2 class="pl-2 mb-2 font-semibold text-sky-800">
+                            Codigo
+                        </h2>
+                        <input type="text" name="Codigo" id="Codigo"
+                            class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
+                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                            Descripcion
+                        </h2>
+                        <input type="text" name="Descripcion" id="Descripcion"
+                            class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
+                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                        Unidad de medida
+                        </h2>
+                        <select name="TUnidad" class="p-2 mt-2 border border-gray-300 w-60">
+                            <option value="">Tipo de medida</option>
+                            <option value="Pieza">Pieza</option>
+                            <option value="Caja">Caja</option> 
+                        </select>
+                    </div>
+                    <div>
+                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                            Cantidad
+                        </h2>
+                        <input type="text" name="Cantidad" id="Cantidad" class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
+                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                            Nombre de quien recibe
+                        </h2>
+                        <input type="text" name="QuienR" id="QuienR" class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
+                        {{-- <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                            Factura
+                        </h2>
+                        <input type="text" name="Factura" id="Factura" class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60"> --}}
+                    </div>
+                </div>
+                <div class="grid place-content-center">
+                    <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                        Observaciones
+                    </h2>
+                    <input type="text" name="Observaciones" id="Observaciones" class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-96 h-40">
+                    {{-- <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                        Imagen
+                    </h2>
+                    <input type="file" name="DirArchivo" id="DirArchivo" onchange="fileSelected(event)"> --}}
+                </div>
+                <button id="addItemButton" class="w-full py-2 mt-4 font-semibold rounded-lg bg-sky-700 text-slate-200"> Cargar
+                        elemento </button>
+                    </form>
+                </div>
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="gap-2 px-4 pt-4">
-                        <h4 class="mb-3">Tabla General</h4>
+                        <h4 class="mb-3">Historial de entradas</h4>
                         <div class="flex flex-row place-content-between">
                             <div class="flex gap-2">
                                 <input type="text" id="search"
-                                    class="w-40 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-300"
+                                    class="w-40 px-3 py-0.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-300"
                                     placeholder="Buscar ..."
-                                >
-                                <button id="Mostrar"
-                                    class="flex items-center justify-center pl-1 pr-2 border border-gray-300 rounded-md h-9 hover:bg-gray-100">
-                                    <div class="flex items-center gap-1 align-middle">
-                                        <svg class="w-6 h-6 text-gray-500" width="18" height="18" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" />
-                                            <line x1="12" y1="5" x2="12" y2="19" />
-                                            <line x1="5" y1="12" x2="19" y2="12" />
-                                        </svg>
-                                        <p class="text-sm text-gray-600">Añadir</p>
-                                    </div>
-                                </button>
+                                > 
                                 <button
                                     class="flex items-center justify-center pl-1 pr-2 font-normal border rounded-md border-slate-500 hover:no-underline h-9 hover:bg-gray-100"
-                                    onclick="exportarPDF();">
+                                    onclick="exportarPDF()">
                                     <div>
-
+    
                                         <div class="flex items-center gap-1 align-middle">
                                             <svg class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24"
                                                 stroke="currentColor">
@@ -45,19 +91,6 @@
                                         </div>
                                         <div class="flex items-center gap-4">
                                         </div>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center pl-1 pr-2 font-normal border rounded-md border-slate-500 hover:no-underline h-9 hover:bg-gray-100"
-                                    onclick="exportToExcel();">
-                                    <div>
-                                        <div class="flex items-center gap-1 align-middle">
-                                            <svg class="w-6 h-6 text-green-700" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                            </svg>
-                                            <p class="text-sm text-gray-600">Generar exel</p>
-                                        </div> 
                                 </button>
                             </div>
                             <div>
@@ -95,21 +128,15 @@
                             <table class="table table-striped" id="inventoryTable">
                                 <thead>
                                     <tr>
-
-                                        <th>QR</th>
-                                        <th>Nomenclatura</th>
-                                        <th>Departamento/Área</th>
-                                        <th>Responsable del bien</th>
-                                        <th>Marca</th>
-
-                                        <th>Modelo</th>
-                                        <th>Numero de serie</th>
-                                        <th>Estado</th>
+                                        <th>Codigo</th>
                                         <th>Descripcion</th>
-
-
-                                        <th>Categoria</th>
-                                        <th>Acciones</th>
+                                        <th>Unidad de medida</th>
+                                        <th>Cantidad</th>
+                                        <th>Fecha</th>
+                                        <th>Quien recibe</th>
+                                        <th>Observaciones</th>
+                                        <th>Factura</th>
+                                        {{-- <th>Acciones</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -119,140 +146,10 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
+
     </section>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script>
-    function exportToExcel() {
-        console.log('Exportando a Excel...');
-
-        const table = document.getElementById('inventoryTable'); 
-        const rows = Array.from(table.rows); // Obtener todas las filas
-        
-        // Crear una nueva tabla filtrando las columnas
-        const filteredData = rows.map(row => {
-            const cells = Array.from(row.cells);
-            return cells.slice(1, -1).map(cell => cell.innerText); // Elimina la primera y última columna
-        });
-
-        // Crear la hoja de Excel
-        const worksheet = XLSX.utils.aoa_to_sheet(filteredData);
-        const workbook = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet 1");
-
-        // Descargar el archivo
-        XLSX.writeFile(workbook, 'tabla_filtrada.xlsx');
-    }
-</script>
-
-{{-- <div class="grid place-content-center"></div> --}}
-<dialog id="dialog" class="top-10 py-5 z-50 min-w-[400px] px-5 rounded-lg bg-slate-300 border-2 border-sky-700"
-    style="display: none;">
-    <button id="cerrarDialogo" class="absolute px-3 py-1 font-bold rounded-full right-10 text-slate-200 bg-sky-700">
-        X
-    </button>
-    <h3 class="pb-6 text-2xl font-bold text-center text-sky-700">
-        Nuevo elemento
-    </h3>
-    <form action="{{ route('createN') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <div class="flex gap-8">
-            <div>
-                <h2 class="pl-2 mb-2 font-semibold text-sky-800">
-                    Nomenclatura
-                </h2>
-                <input type="text" name="Nomenclatura" id="Nomenclatura"
-                    class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Responsable del Área
-                </h2>
-                <input type="text" name="ResponsableArea" id="ResponsableArea"
-                    class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Responsable del bien
-                </h2>
-                <input type="text" name="ResponsableBien" id="ResponsableBien"
-                    class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Marca
-                </h2>
-                <input type="text" name="Marca" id="Marca" class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Color
-                </h2>
-                <input type="text" name="Color" id="Color" class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Numero De Serie
-                </h2>
-                <input type="text" name="NumeroDeSerie" id="NumeroDeSerie"
-                    class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    CodigoCFiscal
-                </h2>
-                <input type="text" name="CodigoCFiscal" id="CodigoCFiscal"
-                    class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-            </div>
-            <div>
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Estado
-                </h2>
-                <select name="Estado" class="p-2 mt-2 border border-gray-300">
-                    <option value="">Filtrar por estado</option>
-                    <option value="En_uso">En uso</option>
-                    <option value="descompuesto">Descompuesto</option>
-                    <option value="en_reparacion">En reparación</option>
-                    <option value="nuevo">Nuevo</option>
-                </select>
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Campus
-                </h2>
-                <input type="text" name="Campus" id="Campus" class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Adquisicion
-                </h2>
-                <input type="text" name="Adquisicion" id="Adquisicion"
-                    class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Imagen
-                </h2>
-                <input type="file" name="DirArchivo" id="DirArchivo" onchange="fileSelected(event)">
-            </div>
-            <div>
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Area
-                </h2>
-                <input type="text" name="Area" id="Area" class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Bien
-                </h2>
-                <input type="text" name="Bien" id="Bien" class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Modelo
-                </h2>
-                <input type="text" name="Modelo" id="Modelo" class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    SAT
-                </h2>
-                <select name="SAT" class="p-2 mt-2 border border-gray-300">
-                    <option value="">Filtrar por Activo</option>
-                    <option value="121.01">121.01</option>
-                    <option value="154.01">154.01</option>
-                    <option value="155.01">155.01</option>
-                    <option value="156.01">156.01</option>
-                </select>
-                <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                    Precio
-                </h2>
-                <input type="text" name="Precio" id="Precio" class="px-1.5 py-1 rounded-lg border-2 border-sky-500">
-            </div>
-        </div>
-        <button id="addItemButton" class="w-full py-2 mt-4 font-semibold rounded-lg bg-sky-700 text-slate-200"> Cargar
-            elemento </button>
-    </form>
-</dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
@@ -383,52 +280,6 @@
 </script>
 
 <script>
-    // Obtener el botón y el diálogo por su ID
-        var boton = document.getElementById("Mostrar");
-        var dialogo = document.getElementById("dialog");
-    
-        // Cuando se hace clic en el botón, mostrar el diálogo
-        boton.addEventListener("click", function() {
-            dialogo.style.display = "block";
-        });
-    
-        // Cuando se hace clic en el botón de cerrar, ocultar el diálogo
-        document.getElementById("cerrarDialogo").addEventListener("click", function() {
-            dialogo.style.display = "none";
-        });
-        
-        // Obtener el botón y el diálogo por su ID
-        // var botonesE = document.querySelectorAll(".Mostrar-e");
-        // var dialogoE = document.getElementById("dialog-e");
-    
-        // // Agregar un evento a cada botón
-        // botonesE.forEach(function(boton) {
-        //     boton.addEventListener("click", function() {
-        //         dialogoE.style.display = "block";
-        //     });
-        // });
-    
-        // // Cuando se hace clic en el botón de cerrar, ocultar el diálogo
-        // document.getElementById("cerrarDialogo-e").addEventListener("click", function() {
-        //     dialogoE.style.display = "none";
-        // });
-
-        // function abrirDialogo(id) {
-        //     // Selecciona el diálogo y el input
-        //     var dialogoE = document.getElementById("dialog-e");
-        //     var inputNomenclatura = document.getElementById("NomenclaturaE");
-            
-        //     // Asigna el valor del ID al input
-        //     console.log(id);
-            
-        //     // inputNomenclatura.value =;
-
-        //     // Muestra el diálogo
-        //     dialogoE.style.display = "block";
-        // }
-</script>
-
-<script>
     function fileSelected(event) {
             const file = event.target.files[0];
             if (file) {
@@ -446,38 +297,20 @@
             const searchInput = document.getElementById('search');
 
             let inventory = [
-                @foreach ($Datos as $Dato)
+                @foreach ($Entradas as $Dato)
                 {
                     id: {{ $Dato->id }},
-                    codigo: '{{ $Dato->CodigoDeBarras }}',
-                    Nomecla: '{{ $Dato->IdNomenclatura }}',
-                    Campus: '{{ $Dato->Campus }}',
-                    Area: '{{ $Dato->Area }}',
-                    // RA: '{{ $Dato->ResponsableArea }}',
-                    RB: '{{ $Dato->ResponsableBien }}',
-                    // nombre: '{{ $Dato->Bien }}',
-                    marca: '{{ $Dato->Marca }}',
-                    modelo: '{{ $Dato->Modelo }}',
-                    // color: '{{ $Dato->Color }}',
-                    serie: '{{ $Dato->NumSerie }}',
-                    // sat: '{{ $Dato->Sat }}',
-                    // fecha: '{{ $Dato->Fecha }}',
-                    // precio: '{{ $Dato->Precio }}',
-                    // CCF: '{{ $Dato->CodigoCFiscal }}',
-                    estado: '{{ $Dato->Estado }}',
-                    Des: '{{ $Dato->Descripcion }}',
-                    // observaciones: '{{ $Dato->Observaciones }}',
-                    // fac: '{{ $Dato->Factura }}',
-                    // img: '{{ $Dato->Imagen }}',
-                    // med: '{{ $Dato->Medida }}',
-                    Categoria: '{{ $Dato->CategoriaI }}',
-                    // categoria: 'Equipo de computo', // Puedes personalizar esta categoría si es necesario
+                    codigo: '{{ $Dato->Codigo }}',
+                    Descripcion: '{{ $Dato->Descripcion }}',
+                    TUnidad: '{{ $Dato->TUnidad }}',
+                    Cantidad: '{{ $Dato->Cantidad }}',
+                    Fecha: '{{ $Dato->Fecha }}',
+                    QuienRecibe: '{{ $Dato->QuienRecibe }}',
+                    Factura: '{{ $Dato->Factura }}',
+                    Observaciones: '{{ $Dato->Observaciones }}',
                 },
                 @endforeach
             ];
-
-            // Definir los títulos de las cabeceras
-            // const tableHeaders = ['Codigo', 'ID', 'Nombre', 'Marca', 'Modelo', 'Color', 'Estado', 'Observaciones', 'Acciones'];
 
             const renderTable = () => {
                 // Seleccionar el tbody de la tabla y limpiarlo
@@ -493,7 +326,6 @@
                     tableHeaders.forEach(header => {
                         const th = document.createElement('th');
                         th.textContent = header;
-                        // th.classList.add('bg-gray-200', 'text-left', 'px-4', 'py-2');
                         headerRow.appendChild(th);
                     });
                     
@@ -521,46 +353,28 @@
 
                 filteredInventory.forEach(item => {
                     const row = document.createElement('tr');
-                    row.classList.add('hover:bg-gray-200');
+                    row.classList.add('hover:bg-gray-100');
 
                     row.innerHTML = `
-                        <td class="border relative border-gray-300">
-                            <img 
-                                class='h-14 w-14 top-0.5 left-2 absolute' 
-                                src="/storage${item.codigo}" 
-                                alt="QR"
-                            >
-                        </td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Nomecla}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Campus}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Area}</td>
+                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.codigo}</td>
+                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Descripcion}</td>
+                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.TUnidad}</td>
+                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Cantidad}</td>
                         
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.RB}</td>
+                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Fecha}</td>
                         
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.marca}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.modelo}</td>
-                        
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.serie}</td>
-                        
-                        
-                        
-                        
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.estado}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Des}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Categoria}</td>
-                        
-                        
-                        
-                        
-                        <td class="flex h-auto px-4 py-2 text-sm text-gray-600 border-t border-gray-300">
-                            <a href="actualizarDato/${item.id}" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">Editar</a>
-                            <form class="grid h-full place-content-center" action="/eliminarDato/${item.id}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
-                        </td>
-                    `;
+                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.QuienRecibe}</td>
+                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Observaciones}</td>
+                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Factura}</td>
+                        `;
+                        // <td class="flex h-auto px-4 py-2 text-sm text-gray-600 border-t border-gray-300">
+                        //     <a href="actualizarDato/${item.id}" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">Editar</a>
+                        //     <form class="grid h-full place-content-center" action="/eliminarDato/${item.id}" method="POST">
+                        //         @csrf
+                        //         @method('PUT')
+                        //         <button type="submit" class="btn btn-danger">Eliminar</button>
+                        //     </form>
+                        // </td>
                     
                     tbody.appendChild(row);
                 });

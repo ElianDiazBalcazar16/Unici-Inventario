@@ -154,4 +154,78 @@ class ConfigurationsController extends Controller
         }
         return redirect('/Areas');
     }
+    // ------------------ Areas ---
+    public function indexBien()
+    {
+        // $Datos = DB::table('Areas')
+        //         ->join('Campus', 'Areas.Campus', '=', 'Campus.id') // Relación entre tablas
+        //         ->select('Areas.*', 'Campus.Nombre as NombreCampus') // Selecciona todos los campos de Areas y el nombre del campus
+        //         ->get();
+
+        // dd($Datos);
+
+        $Datos = DB::table('Producto')
+                ->select('*')
+                ->get(); 
+
+        return view('Bien.Bien', [
+            'Datos'     => $Datos,
+        ]);
+    }
+
+    public function createBien(Request $Request)
+    { 
+        // dd($Request);
+        DB::table('Producto')->insert([
+            'Codigo' => $Request->Codigo,
+            'Proveedor' => $Request->Proveedor, 
+        ]);
+        return redirect('/Bien');
+    }
+    
+    public function V_EditBien($id)
+    {
+        $Datos = DB::table('Producto')
+                ->where('id',$id)
+                ->select('*')
+                ->first();
+
+        $campos = [
+            'Codigo' => 'Codigo',
+            'Proveedor' => 'Nombre del proveedor',
+        ];
+        return view('Bien.Edit', [
+            'Datos'     => $Datos,
+            'campos'    => $campos,
+        ]);
+    }
+    
+    public function deliteBien($id)
+    {
+        $Datos = DB::table('Producto')
+                ->where('id',$id)
+                ->delete();
+        return redirect()->back();
+    }
+    
+    public function editUPBien(Request $Request, $id)
+    {
+        // dd($Request);
+        try{
+            $Request->validate([
+                'Codigo' => 'required|string|max:255',
+                'Proveedor' => 'required|string|max:255',
+            ]);
+            DB::table('Producto')
+                ->where('id',$id)
+                ->update([
+                    'Codigo' => $Request->Codigo,
+                    'Proveedor' => $Request->Proveedor
+                ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            dd($th, $Request);
+        }
+        return redirect('/Bien');
+    }
 }

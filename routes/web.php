@@ -10,6 +10,8 @@ use App\Http\Controllers\SourvenirsController;
 use App\Http\Controllers\PapeleriaInsumosController;
 use App\Http\Controllers\InventarioActivosController;
 use App\Http\Controllers\ConfigurationsController;
+use App\Http\Controllers\GestionController;
+use App\Http\Controllers\InventarioPController;
 use Illuminate\Support\Facades\Route;
 
 // Ruta para el dashboard
@@ -35,6 +37,24 @@ Route::prefix('Areas')->group(function () {
     Route::get('/actualizarDato/{id}',[ConfigurationsController::class, 'V_EditAreas'])->name('EditAreas');
     Route::put('/actualizarDato/{id}',[ConfigurationsController::class, 'editUPAreas'])->name('EditAreas.up');
 });
+Route::prefix('Bien')->group(function () {
+    Route::get('/', [ConfigurationsController::class, 'indexBien'])->name('Bien.index'); // Mostrar Generals
+    Route::put('/añadirDato',[ConfigurationsController::class, 'createBien'])->name('createBien');
+    Route::put('/eliminarDato/{id}',[ConfigurationsController::class, 'deliteBien'])->name('eliminarBien');
+    Route::get('/actualizarDato/{id}',[ConfigurationsController::class, 'V_EditBien'])->name('EditBien');
+    Route::put('/actualizarDato/{id}',[ConfigurationsController::class, 'editUPBien'])->name('EditBien.up');
+});
+Route::prefix('Inventario')->group(function () {
+    Route::get('/', [InventarioPController::class, 'index'])->name('Inv.index'); // Mostrar Generals
+    Route::get('/entradas', [InventarioPController::class, 'entradas'])->name('Inv.entradas'); // Mostrar Generals
+    Route::put('/añadirDatoEntradas',[InventarioPController::class, 'createE'])->name('createEntrada');
+    Route::put('/añadirDatoSalida',[InventarioPController::class, 'createS'])->name('createSalida');
+    Route::get('/salidas', [InventarioPController::class, 'salidas'])->name('Inv.salidas'); // Mostrar Generals
+    Route::put('/añadirDato',[InventarioPController::class, 'createInv'])->name('createInv');
+    Route::put('/eliminarDato/{id}',[InventarioPController::class, 'deliteInv'])->name('eliminarInv');
+    Route::get('/actualizarDato/{id}',[InventarioPController::class, 'V_EditInv'])->name('EditInv');
+    Route::put('/actualizarDato/{id}',[InventarioPController::class, 'editUPInv'])->name('EditInv.up');
+});
 
 // Rutas para otras secciones
 Route::put('/añadirDato',[GeneralController::class, 'create'])->name('createN');
@@ -44,7 +64,7 @@ Route::put('/eliminarDato/{id}',[GeneralController::class, 'delite'])->name('eli
 Route::get('/descarga/{filename}',[GeneralController::class, 'Descarga'])->name('Descarga');
 
 Route::get('/SAT', [SATController::class, 'index'])->name('responsable');
-Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario');
+// Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario');
 Route::get('/reportes', [ReportesController::class, 'index'])->name('reportes');
 Route::get('/sourvenirs', [SourvenirsController::class, 'index'])->name('sourvenirs');
 Route::get('/papeleriainsumos', [PapeleriaInsumosController::class, 'index'])->name('papeleriainsumos');
@@ -52,10 +72,7 @@ Route::get('/inventarioactivos', [InventarioActivosController::class, 'index'])-
 
 Route::get('/Detallado/{id}', [GeneralController::class, 'Detallado'])->name('inventarioDetallado');
 
-// Ruta principal (Welcome)
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/Gestion', [GestionController::class, 'index'])->name('Gestion');
 
 // Ruta adicional del dashboard (solo para usuarios autenticados)
 Route::get('/dashboard', function () {
