@@ -6,6 +6,10 @@
 /storage/*.key
 /storage/pail
 /vendor
+/docker
+sail
+/resources/views/errors
+/resources/views/vendor
 .env
 .env.backup
 .env.production

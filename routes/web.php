@@ -9,6 +9,7 @@ use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\SourvenirsController;
 use App\Http\Controllers\PapeleriaInsumosController;
 use App\Http\Controllers\InventarioActivosController;
+use App\Http\Controllers\ConfigurationsController;
 use Illuminate\Support\Facades\Route;
 
 // Ruta para el dashboard
@@ -20,21 +21,36 @@ Route::prefix('General')->group(function () {
     Route::post('/', [GeneralController::class, 'store'])->name('General.store'); // Crear un nuevo General
     Route::delete('/{id}', [GeneralController::class, 'destroy'])->name('General.destroy'); // Eliminar un General
 });
+Route::prefix('Campus')->group(function () {
+    Route::get('/', [ConfigurationsController::class, 'indexCampus'])->name('Campus.index'); // Mostrar Generals
+    Route::put('/añadirDato',[ConfigurationsController::class, 'createCampus'])->name('createCampus');
+    Route::put('/eliminarDato/{id}',[ConfigurationsController::class, 'deliteCampus'])->name('eliminarCampus');
+    Route::get('/actualizarDato/{id}',[ConfigurationsController::class, 'V_EditCampus'])->name('EditCampus');
+    Route::put('/actualizarDato/{id}',[ConfigurationsController::class, 'editUPCampus'])->name('EditCampus.up');
+});
+Route::prefix('Areas')->group(function () {
+    Route::get('/', [ConfigurationsController::class, 'indexAreas'])->name('Areas.index'); // Mostrar Generals
+    Route::put('/añadirDato',[ConfigurationsController::class, 'createAreas'])->name('createAreas');
+    Route::put('/eliminarDato/{id}',[ConfigurationsController::class, 'deliteAreas'])->name('eliminarAreas');
+    Route::get('/actualizarDato/{id}',[ConfigurationsController::class, 'V_EditAreas'])->name('EditAreas');
+    Route::put('/actualizarDato/{id}',[ConfigurationsController::class, 'editUPAreas'])->name('EditAreas.up');
+});
 
 // Rutas para otras secciones
-Route::get('/SAT', [SATController::class, 'index'])->name('responsable');
 Route::put('/añadirDato',[GeneralController::class, 'create'])->name('createN');
 Route::get('/actualizarDato/{id}',[GeneralController::class, 'edit'])->name('editN');
 Route::put('/actualizarDato/{id}',[GeneralController::class, 'editUP'])->name('editN.up');
 Route::put('/eliminarDato/{id}',[GeneralController::class, 'delite'])->name('eliminarN');
 Route::get('/descarga/{filename}',[GeneralController::class, 'Descarga'])->name('Descarga');
+
+Route::get('/SAT', [SATController::class, 'index'])->name('responsable');
 Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario');
 Route::get('/reportes', [ReportesController::class, 'index'])->name('reportes');
 Route::get('/sourvenirs', [SourvenirsController::class, 'index'])->name('sourvenirs');
 Route::get('/papeleriainsumos', [PapeleriaInsumosController::class, 'index'])->name('papeleriainsumos');
 Route::get('/inventarioactivos', [InventarioActivosController::class, 'index'])->name('inventarioactivos');
 
-Route::get('/Detallado', [GeneralController::class, 'Detallado'])->name('inventarioDetallado');
+Route::get('/Detallado/{id}', [GeneralController::class, 'Detallado'])->name('inventarioDetallado');
 
 // Ruta principal (Welcome)
 // Route::get('/', function () {

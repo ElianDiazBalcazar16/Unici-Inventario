@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
-class GeneralController extends Controller
+class InventarioPController extends Controller
 {
     public function index()
     {
@@ -22,18 +24,19 @@ class GeneralController extends Controller
         // return view('General');
     }
     
-    public function Detallado()
+    public function Detallado($id)
     {
         $Datos = DB::table('InventarioGeneral')
                     ->select('*')
-                    ->where('id',1)
-                    ->get();
+                    ->where('id',$id)
+                    ->first();
 
-        // dd($Datos);
+        if ($Datos && isset($Datos->Imagen)) {
+            $Datos->Imagen = asset('storage/' . $Datos->Imagen);
+        }
         return view('detalles', [
             'Datos' => $Datos,
         ]);
-        // return view('General');
     }
 
     public function Descarga($filename)
@@ -54,20 +57,6 @@ class GeneralController extends Controller
 
     public function create(Request $Request)
     {
-        // $Request->Validate([
-        //     'Nomenclatura' => 'string|max:255',
-        //     'ResponsableArea' => 'string|max:255',
-        //     'ResponsableBien' => 'string|max:255',
-        //     'Marca' => 'string|max:255',
-        //     'Color' => 'string|max:255',
-        //     'Adquisicion' => 'string|max:255',
-        //     'Area' => 'string|max:255',
-        //     'Bien' => 'string|max:255',
-        //     'Modelo' => 'string|max:255',
-        //     'SAT' => 'string|max:255',
-        // ]);
-
-        // dd($Request);
 
         if($Request->hasFile('DirArchivo')){
             $file = $Request->file('DirArchivo');
@@ -76,16 +65,13 @@ class GeneralController extends Controller
             $path = $file->storeAs('uploads/images', $originalName);
 
             $DirDB = $originalName;
-
-            // dd($DirDB);
         } else {
-            $path = " ";
-            // dd('no entro');
+            $path = " "; 
         }
 
         DB::table('InventarioGeneral')->insert([
             'CodigoDeBarras'    => '/imagen0.png',
-            'CodigoDeBarras' => $Request->CodigoDeBarras,
+            // 'CodigoDeBarras' => $Request->CodigoDeBarras,
             'IdNomenclatura' => $Request->Nomenclatura,
             'Campus'        => $Request->Campus,
             'ResponsableArea' => $Request->ResponsableArea,
@@ -107,6 +93,37 @@ class GeneralController extends Controller
             'Imagen' => $path,
             'Medida' => $Request->Medida,
         ]);
+
+        $ID = DB::table('InventarioGeneral')
+            ->select('id')
+            ->where('IdNomenclatura',$Request->Nomenclatura)
+            ->first();
+
+        // Define el nombre del archivo para el código QR
+        $_fileName = 'qrcodes/' . uniqid() . '.png';
+
+        // dd($ID);
+
+        $link = route('inventarioDetallado',['id'=>$ID->id]);
+
+        // // dd($link);
+
+        // // Generar el código QR y guardarlo en el storage público
+        // $qrCodeContent = QrCode::format('png') // Formato PNG
+        //     ->size(300) // Tamaño del QR
+        //     ->generate($link); // Generar el QR con el link
+
+        // // Guardar la imagen en el disco público de Laravel
+        // Storage::disk('public')->put($_fileName, $qrCodeContent);
+
+        // // Retornar la ruta pública del QR
+        // $url = Storage::url($_fileName);
+
+        // DB::table('InventarioGeneral')
+        //         ->where('id',$ID)
+        //         ->update([
+        //             'CodigoDeBarras' => $url,
+        //         ]);
     }
     
     public function edit($id)
