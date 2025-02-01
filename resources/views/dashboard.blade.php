@@ -2,872 +2,73 @@
 
 @section('content')
 
-
-<!-- Main Content -->
-{{-- <div class="flex-1 p-6">
-    <h1 class="mb-6 text-3xl font-bold text-gray-700">Inicio - UNICI</h1>
-
-    <!-- Top Statistics -->
-    <div class="grid grid-cols-3 gap-4 mb-8">
-        <div class="p-4 bg-blue-100 rounded-lg shadow">
-            <h2 class="text-lg font-bold text-blue-600">Inventario General</h2>
-            <p class="text-2xl font-bold">1,230 elementos</p>
-            <p class="text-sm text-green-600">Actualizado</p>
+    <div class="flex-1 p-6">
+        <div class="main-content">
+        <h1 class="mb-6 text-3xl font-bold text-gray-700">INICIO</h1>
+      <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-primary">
+              <i class="far fa-newspaper"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Inventario General</h4>
+              </div>
+              <div class="card-body">
+                567
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="p-4 bg-green-100 rounded-lg shadow">
-            <h2 class="text-lg font-bold text-green-600">Insumos</h2>
-            <p class="text-2xl font-bold">540 elementos</p>
-            <p class="text-sm text-gray-500">Última entrada: 15/01/2025</p>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-warning">
+              <i class="far fa-newspaper"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Souvenirs</h4>
+              </div>
+              <div class="card-body">
+                320
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="p-4 bg-yellow-100 rounded-lg shadow">
-            <h2 class="text-lg font-bold text-yellow-600">Papelería</h2>
-            <p class="text-2xl font-bold">320 elementos</p>
-            <p class="text-sm text-gray-500">Departamentos: 8</p>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-primary">
+              <i class="far fa-file"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Entrada de souvenir</h4>
+              </div>
+              <div class="card-body">
+                120
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="p-4 bg-red-100 rounded-lg shadow">
-            <h2 class="text-lg font-bold text-red-600">Activos</h2>
-            <p class="text-2xl font-bold">230 elementos</p>
-            <p class="text-sm text-gray-500">En uso: 95%</p>
-        </div>
-        <div class="p-4 bg-purple-100 rounded-lg shadow">
-            <h2 class="text-lg font-bold text-purple-600">Reportes Generados</h2>
-            <p class="text-2xl font-bold">45</p>
-            <p class="text-sm text-green-600">Este mes</p>
-        </div>
-        <div class="p-4 bg-teal-100 rounded-lg shadow">
-            <h2 class="text-lg font-bold text-teal-600">Departamentos</h2>
-            <p class="text-2xl font-bold">12</p>
-            <p class="text-sm text-gray-500">Con inventario registrado</p>
-        </div>
-    </div>
-
-    <!-- Graphs Section -->
-    <div class="grid grid-cols-2 gap-4">
-        <!-- Inventario General Chart -->
-        <div class="p-4 bg-white rounded-lg shadow">
-            <h3 class="mb-4 text-xl font-bold text-gray-700">Inventario General</h3>
-            <canvas id="inventoryChart"></canvas>
-        </div>
-        <!-- Insumos Chart -->
-        <div class="p-4 bg-white rounded-lg shadow">
-            <h3 class="mb-4 text-xl font-bold text-gray-700">Distribución de Insumos</h3>
-            <canvas id="suppliesChart"></canvas>
-        </div>
-    </div>
-
-    <!-- Recent Data Section -->
-    <div class="grid grid-cols-2 gap-4 mt-8">
-        <!-- Últimos movimientos -->
-        <div class="p-4 bg-white rounded-lg shadow">
-            <h3 class="mb-4 text-xl font-bold text-gray-700">Últimos Movimientos</h3>
-            <table class="w-full text-left table-auto">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-2 text-gray-600">Departamento</th>
-                        <th class="px-4 py-2 text-gray-600">Ítem</th>
-                        <th class="px-4 py-2 text-gray-600">Cantidad</th>
-                        <th class="px-4 py-2 text-gray-600">Fecha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="px-4 py-2">Administración</td>
-                        <td class="px-4 py-2">Plumas</td>
-                        <td class="px-4 py-2">120</td>
-                        <td class="px-4 py-2">20/01/2025</td>
-                    </tr>
-                    <!-- Añadir más filas dinámicas -->
-                </tbody>
-            </table>
-        </div>
-        <!-- Alertas de inventario -->
-        <div class="p-4 bg-white rounded-lg shadow">
-            <h3 class="mb-4 text-xl font-bold text-gray-700">Alertas de Inventario</h3>
-            <ul>
-                <li class="py-2 text-gray-700">Papel Bond: <span class="font-bold text-red-600">Bajo Stock</span></li>
-                <li class="py-2 text-gray-700">Tóner: <span class="font-bold text-yellow-600">Por reabastecer</span>
-                </li>
-                <li class="py-2 text-gray-700">Escritorios: <span class="font-bold text-green-600">Suficiente</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    // Inventario General Chart
-    const inventoryData = {
-        labels: ['Insumos', 'Papelería', 'Activos', 'Otros'],
-        datasets: [{
-            data: [540, 320, 230, 140],
-            backgroundColor: [
-                'rgba(54, 162, 235, 0.7)',
-                'rgba(255, 206, 86, 0.7)',
-                'rgba(255, 99, 132, 0.7)',
-                'rgba(153, 102, 255, 0.7)'
-            ],
-        }]
-    };
-    const inventoryConfig = {
-        type: 'pie',
-        data: inventoryData,
-        options: { responsive: true }
-    };
-    new Chart(document.getElementById('inventoryChart'), inventoryConfig);
-
-    // Insumos Chart
-    const suppliesData = {
-        labels: ['Tóner', 'Papel Bond', 'Plumas', 'Otros'],
-        datasets: [{
-            label: 'Distribución de Insumos',
-            data: [120, 200, 300, 100],
-            backgroundColor: [
-                'rgba(75, 192, 192, 0.7)',
-                'rgba(255, 159, 64, 0.7)',
-                'rgba(153, 102, 255, 0.7)',
-                'rgba(201, 203, 207, 0.7)'
-            ],
-            borderColor: [
-                'rgba(75, 192, 192, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(201, 203, 207, 1)'
-            ],
-            borderWidth: 1
-        }]
-    };
-    const suppliesConfig = {
-        type: 'bar',
-        data: suppliesData,
-        options: { responsive: true }
-    };
-    new Chart(document.getElementById('suppliesChart'), suppliesConfig);
-</script> --}}
-
-<div class="main-content">
-    <section class="section">
-
-        <div class="section-header">
-            <h1>Dashboard</h1>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-primary">
-                        <i class="far fa-user"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Inventario General</h4>
-                        </div>
-                        <div class="card-body">
-                            1,230 Elementos
-                        </div>
-                    </div>
-                </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-warning">
+            <i class="far fa-file"></i>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-danger">
-                        <i class="far fa-newspaper"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Insumos</h4>
-                        </div>
-                        <div class="card-body">
-                            540
-                        </div>
-                    </div>
-                </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Salida de souvenir</h4>
+              </div>
+              <div class="card-body">
+                200
+              </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-warning">
-                        <i class="far fa-file"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Papelería</h4>
-                        </div>
-                        <div class="card-body">
-                            320
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-success">
-                        <i class="fas fa-circle"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Activos</h4>
-                        </div>
-                        <div class="card-body">
-                            230
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-primary">
-                        <i class="far fa-user"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Total Admin</h4>
-                        </div>
-                        <div class="card-body">
-                            10
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-danger">
-                        <i class="far fa-newspaper"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>News</h4>
-                        </div>
-                        <div class="card-body">
-                            42
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-warning">
-                        <i class="far fa-file"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Reports</h4>
-                        </div>
-                        <div class="card-body">
-                            1,201
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-success">
-                        <i class="fas fa-circle"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Online Users</h4>
-                        </div>
-                        <div class="card-body">
-                            47
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
-        {{-- <div class="row">
-            <div class="col-lg-8 col-md-12 col-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Statistics</h4>
-                        <div class="card-header-action">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-primary">Week</a>
-                                <a href="#" class="btn">Month</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="myChart" height="182"></canvas>
-                        <div class="statistic-details mt-sm-4">
-                            <div class="statistic-details-item">
-                                <span class="text-muted"><span class="text-primary"><i
-                                            class="fas fa-caret-up"></i></span> 7%</span>
-                                <div class="detail-value">$243</div>
-                                <div class="detail-name">Today's Sales</div>
-                            </div>
-                            <div class="statistic-details-item">
-                                <span class="text-muted"><span class="text-danger"><i
-                                            class="fas fa-caret-down"></i></span> 23%</span>
-                                <div class="detail-value">$2,902</div>
-                                <div class="detail-name">This Week's Sales</div>
-                            </div>
-                            <div class="statistic-details-item">
-                                <span class="text-muted"><span class="text-primary"><i
-                                            class="fas fa-caret-up"></i></span>9%</span>
-                                <div class="detail-value">$12,821</div>
-                                <div class="detail-name">This Month's Sales</div>
-                            </div>
-                            <div class="statistic-details-item">
-                                <span class="text-muted"><span class="text-primary"><i
-                                            class="fas fa-caret-up"></i></span> 19%</span>
-                                <div class="detail-value">$92,142</div>
-                                <div class="detail-name">This Year's Sales</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Recent Activities</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled list-unstyled-border">
-                            <li class="media">
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-1.png"
-                                    alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right text-primary">Now</div>
-                                    <div class="media-title">Farhan A Mujib</div>
-                                    <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla.
-                                        Nulla vel metus scelerisque ante sollicitudin.</span>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-2.png"
-                                    alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right">12m</div>
-                                    <div class="media-title">Ujang Maman</div>
-                                    <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla.
-                                        Nulla vel metus scelerisque ante sollicitudin.</span>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-3.png"
-                                    alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right">17m</div>
-                                    <div class="media-title">Rizal Fakhri</div>
-                                    <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla.
-                                        Nulla vel metus scelerisque ante sollicitudin.</span>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-4.png"
-                                    alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right">21m</div>
-                                    <div class="media-title">Alfa Zulkarnain</div>
-                                    <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla.
-                                        Nulla vel metus scelerisque ante sollicitudin.</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="pt-1 pb-1 text-center">
-                            <a href="#" class="btn btn-primary btn-lg btn-round">
-                                View All
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        {{-- <div class="row">
-            <div class="col-lg-6 col-md-12 col-12 col-sm-12">
-                <div class="card">
-                    <div class="pt-2 pb-2 card-body">
-                        <div id="myWeather">Please wait</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Authors</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="pb-2 row">
-                            <div class="mb-4 col-6 col-sm-3 col-lg-3 mb-md-0">
-                                <div class="mb-0 avatar-item">
-                                    <img alt="image" src="assets/img/avatar/avatar-5.png" class="img-fluid"
-                                        data-toggle="tooltip" title="Alfa Zulkarnain">
-                                    <div class="avatar-badge" title="Editor" data-toggle="tooltip"><i
-                                            class="fas fa-wrench"></i></div>
-                                </div>
-                            </div>
-                            <div class="mb-4 col-6 col-sm-3 col-lg-3 mb-md-0">
-                                <div class="mb-0 avatar-item">
-                                    <img alt="image" src="assets/img/avatar/avatar-4.png" class="img-fluid"
-                                        data-toggle="tooltip" title="Egi Ferdian">
-                                    <div class="avatar-badge" title="Admin" data-toggle="tooltip"><i
-                                            class="fas fa-cog"></i></div>
-                                </div>
-                            </div>
-                            <div class="mb-4 col-6 col-sm-3 col-lg-3 mb-md-0">
-                                <div class="mb-0 avatar-item">
-                                    <img alt="image" src="assets/img/avatar/avatar-1.png" class="img-fluid"
-                                        data-toggle="tooltip" title="Jaka Ramadhan">
-                                    <div class="avatar-badge" title="Author" data-toggle="tooltip"><i
-                                            class="fas fa-pencil-alt"></i></div>
-                                </div>
-                            </div>
-                            <div class="mb-4 col-6 col-sm-3 col-lg-3 mb-md-0">
-                                <div class="mb-0 avatar-item">
-                                    <img alt="image" src="assets/img/avatar/avatar-2.png" class="img-fluid"
-                                        data-toggle="tooltip" title="Ryan">
-                                    <div class="avatar-badge" title="Admin" data-toggle="tooltip"><i
-                                            class="fas fa-cog"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        {{-- <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Referral URL</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-4">
-                            <div class="float-right text-small font-weight-bold text-muted">2,100</div>
-                            <div class="mb-1 font-weight-bold">Google</div>
-                            <div class="progress" data-height="3">
-                                <div class="progress-bar" role="progressbar" data-width="80%" aria-valuenow="80"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <div class="float-right text-small font-weight-bold text-muted">1,880</div>
-                            <div class="mb-1 font-weight-bold">Facebook</div>
-                            <div class="progress" data-height="3">
-                                <div class="progress-bar" role="progressbar" data-width="67%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <div class="float-right text-small font-weight-bold text-muted">1,521</div>
-                            <div class="mb-1 font-weight-bold">Bing</div>
-                            <div class="progress" data-height="3">
-                                <div class="progress-bar" role="progressbar" data-width="58%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <div class="float-right text-small font-weight-bold text-muted">884</div>
-                            <div class="mb-1 font-weight-bold">Yahoo</div>
-                            <div class="progress" data-height="3">
-                                <div class="progress-bar" role="progressbar" data-width="36%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <div class="float-right text-small font-weight-bold text-muted">473</div>
-                            <div class="mb-1 font-weight-bold">Kodinger</div>
-                            <div class="progress" data-height="3">
-                                <div class="progress-bar" role="progressbar" data-width="28%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <div class="float-right text-small font-weight-bold text-muted">418</div>
-                            <div class="mb-1 font-weight-bold">Multinity</div>
-                            <div class="progress" data-height="3">
-                                <div class="progress-bar" role="progressbar" data-width="20%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Popular Browser</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="text-center col">
-                                <div class="browser browser-chrome"></div>
-                                <div class="mt-2 font-weight-bold">Chrome</div>
-                                <div class="text-muted text-small"><span class="text-primary"><i
-                                            class="fas fa-caret-up"></i></span> 48%</div>
-                            </div>
-                            <div class="text-center col">
-                                <div class="browser browser-firefox"></div>
-                                <div class="mt-2 font-weight-bold">Firefox</div>
-                                <div class="text-muted text-small"><span class="text-primary"><i
-                                            class="fas fa-caret-up"></i></span> 26%</div>
-                            </div>
-                            <div class="text-center col">
-                                <div class="browser browser-safari"></div>
-                                <div class="mt-2 font-weight-bold">Safari</div>
-                                <div class="text-muted text-small"><span class="text-danger"><i
-                                            class="fas fa-caret-down"></i></span> 14%</div>
-                            </div>
-                            <div class="text-center col">
-                                <div class="browser browser-opera"></div>
-                                <div class="mt-2 font-weight-bold">Opera</div>
-                                <div class="text-muted text-small">7%</div>
-                            </div>
-                            <div class="text-center col">
-                                <div class="browser browser-internet-explorer"></div>
-                                <div class="mt-2 font-weight-bold">IE</div>
-                                <div class="text-muted text-small"><span class="text-primary"><i
-                                            class="fas fa-caret-up"></i></span> 5%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mt-sm-5 mt-md-0">
-                    <div class="card-header">
-                        <h4>Visitors</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="visitorMap"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>This Week Stats</h4>
-                        <div class="card-header-action">
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown">Filter</a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="#" class="dropdown-item has-icon"><i class="far fa-circle"></i>
-                                        Electronic</a>
-                                    <a href="#" class="dropdown-item has-icon"><i class="far fa-circle"></i> T-shirt</a>
-                                    <a href="#" class="dropdown-item has-icon"><i class="far fa-circle"></i> Hat</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="#" class="dropdown-item">View All</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="summary">
-                            <div class="summary-info">
-                                <h4>$1,053</h4>
-                                <div class="text-muted">Sold 3 items on 2 customers</div>
-                                <div class="mt-2 d-block">
-                                    <a href="#">View All</a>
-                                </div>
-                            </div>
-                            <div class="summary-item">
-                                <h6>Item List <span class="text-muted">(3 Items)</span></h6>
-                                <ul class="list-unstyled list-unstyled-border">
-                                    <li class="media">
-                                        <a href="#">
-                                            <img class="mr-3 rounded" width="50"
-                                                src="assets/img/products/product-1-50.png" alt="product">
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="media-right">$405</div>
-                                            <div class="media-title"><a href="#">PlayStation 9</a></div>
-                                            <div class="text-muted text-small">by <a href="#">Hasan Basri</a>
-                                                <div class="bullet"></div> Sunday
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <a href="#">
-                                            <img class="mr-3 rounded" width="50"
-                                                src="assets/img/products/product-2-50.png" alt="product">
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="media-right">$499</div>
-                                            <div class="media-title"><a href="#">RocketZ</a></div>
-                                            <div class="text-muted text-small">by <a href="#">Hasan Basri</a>
-                                                <div class="bullet"></div> Sunday
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <a href="#">
-                                            <img class="mr-3 rounded" width="50"
-                                                src="assets/img/products/product-3-50.png" alt="product">
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="media-right">$149</div>
-                                            <div class="media-title"><a href="#">Xiaomay Readme 4.0</a></div>
-                                            <div class="text-muted text-small">by <a href="#">Kusnaedi</a>
-                                                <div class="bullet"></div> Tuesday
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="d-inline">Tasks</h4>
-                        <div class="card-header-action">
-                            <a href="#" class="btn btn-primary">View All</a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled list-unstyled-border">
-                            <li class="media">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="cbx-1">
-                                    <label class="custom-control-label" for="cbx-1"></label>
-                                </div>
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-4.png"
-                                    alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right mb-1 badge badge-pill badge-danger">Not Finished</div>
-                                    <h6 class="media-title"><a href="#">Redesign header</a></h6>
-                                    <div class="text-small text-muted">Alfa Zulkarnain <div class="bullet"></div> <span
-                                            class="text-primary">Now</span></div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="cbx-2" checked="">
-                                    <label class="custom-control-label" for="cbx-2"></label>
-                                </div>
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-5.png"
-                                    alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right mb-1 badge badge-pill badge-primary">Completed</div>
-                                    <h6 class="media-title"><a href="#">Add a new component</a></h6>
-                                    <div class="text-small text-muted">Serj Tankian <div class="bullet"></div> 4 Min
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="cbx-3">
-                                    <label class="custom-control-label" for="cbx-3"></label>
-                                </div>
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-2.png"
-                                    alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right mb-1 badge badge-pill badge-warning">Progress</div>
-                                    <h6 class="media-title"><a href="#">Fix modal window</a></h6>
-                                    <div class="text-small text-muted">Ujang Maman <div class="bullet"></div> 8 Min
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="cbx-4">
-                                    <label class="custom-control-label" for="cbx-4"></label>
-                                </div>
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-1.png"
-                                    alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right mb-1 badge badge-pill badge-danger">Not Finished</div>
-                                    <h6 class="media-title"><a href="#">Remove unwanted classes</a></h6>
-                                    <div class="text-small text-muted">Farhan A Mujib <div class="bullet"></div> 21 Min
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        {{-- <div class="row">
-            <div class="col-lg-5 col-md-12 col-12 col-sm-12">
-                <form method="post" class="needs-validation" novalidate="">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Quick Draft</h4>
-                        </div>
-                        <div class="pb-0 card-body">
-                            <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" name="title" class="form-control" required>
-                                <div class="invalid-feedback">
-                                    Please fill in the title
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Content</label>
-                                <textarea class="summernote-simple"></textarea>
-                            </div>
-                        </div>
-                        <div class="pt-0 card-footer">
-                            <button class="btn btn-primary">Save Draft</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-lg-7 col-md-12 col-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Latest Posts</h4>
-                        <div class="card-header-action">
-                            <a href="#" class="btn btn-primary">View All</a>
-                        </div>
-                    </div>
-                    <div class="p-0 card-body">
-                        <div class="table-responsive">
-                            <table class="table mb-0 table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Author</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            Introduction Laravel 5
-                                            <div class="table-links">
-                                                in <a href="#">Web Development</a>
-                                                <div class="bullet"></div>
-                                                <a href="#">View</a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="font-weight-600"><img
-                                                    src="assets/img/avatar/avatar-1.png" alt="avatar" width="30"
-                                                    class="mr-1 rounded-circle"> Bagus Dwi Cahya</a>
-                                        </td>
-                                        <td>
-                                            <a class="mr-1 btn btn-primary btn-action" data-toggle="tooltip"
-                                                title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
-                                                data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
-                                                data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Laravel 5 Tutorial - Installation
-                                            <div class="table-links">
-                                                in <a href="#">Web Development</a>
-                                                <div class="bullet"></div>
-                                                <a href="#">View</a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="font-weight-600"><img
-                                                    src="assets/img/avatar/avatar-1.png" alt="avatar" width="30"
-                                                    class="mr-1 rounded-circle"> Bagus Dwi Cahya</a>
-                                        </td>
-                                        <td>
-                                            <a class="mr-1 btn btn-primary btn-action" data-toggle="tooltip"
-                                                title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
-                                                data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
-                                                data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Laravel 5 Tutorial - MVC
-                                            <div class="table-links">
-                                                in <a href="#">Web Development</a>
-                                                <div class="bullet"></div>
-                                                <a href="#">View</a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="font-weight-600"><img
-                                                    src="assets/img/avatar/avatar-1.png" alt="avatar" width="30"
-                                                    class="mr-1 rounded-circle"> Bagus Dwi Cahya</a>
-                                        </td>
-                                        <td>
-                                            <a class="mr-1 btn btn-primary btn-action" data-toggle="tooltip"
-                                                title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
-                                                data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
-                                                data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Laravel 5 Tutorial - Migration
-                                            <div class="table-links">
-                                                in <a href="#">Web Development</a>
-                                                <div class="bullet"></div>
-                                                <a href="#">View</a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="font-weight-600"><img
-                                                    src="assets/img/avatar/avatar-1.png" alt="avatar" width="30"
-                                                    class="mr-1 rounded-circle"> Bagus Dwi Cahya</a>
-                                        </td>
-                                        <td>
-                                            <a class="mr-1 btn btn-primary btn-action" data-toggle="tooltip"
-                                                title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
-                                                data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
-                                                data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Laravel 5 Tutorial - Deploy
-                                            <div class="table-links">
-                                                in <a href="#">Web Development</a>
-                                                <div class="bullet"></div>
-                                                <a href="#">View</a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="font-weight-600"><img
-                                                    src="assets/img/avatar/avatar-1.png" alt="avatar" width="30"
-                                                    class="mr-1 rounded-circle"> Bagus Dwi Cahya</a>
-                                        </td>
-                                        <td>
-                                            <a class="mr-1 btn btn-primary btn-action" data-toggle="tooltip"
-                                                title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
-                                                data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
-                                                data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Laravel 5 Tutorial - Closing
-                                            <div class="table-links">
-                                                in <a href="#">Web Development</a>
-                                                <div class="bullet"></div>
-                                                <a href="#">View</a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="font-weight-600"><img
-                                                    src="assets/img/avatar/avatar-1.png" alt="avatar" width="30"
-                                                    class="mr-1 rounded-circle"> Bagus Dwi Cahya</a>
-                                        </td>
-                                        <td>
-                                            <a class="mr-1 btn btn-primary btn-action" data-toggle="tooltip"
-                                                title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
-                                                data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
-                                                data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
+          </div>
+        </div>                  
+      </div>
+      
+        <!-- Graphs Section -->
         <div class="grid grid-cols-2 gap-4">
             <!-- Inventario General Chart -->
             <div class="p-4 bg-white rounded-lg shadow">
@@ -876,7 +77,7 @@
             </div>
             <!-- Insumos Chart -->
             <div class="p-4 bg-white rounded-lg shadow">
-                <h3 class="mb-4 text-xl font-bold text-gray-700">Distribución de Insumos</h3>
+                <h3 class="mb-4 text-xl font-bold text-gray-700">Souvenirs</h3>
                 <canvas id="suppliesChart"></canvas>
             </div>
         </div>
@@ -889,18 +90,16 @@
                 <table class="w-full text-left table-auto">
                     <thead>
                         <tr>
-                            <th class="px-4 py-2 text-gray-600">Departamento</th>
-                            <th class="px-4 py-2 text-gray-600">Elementos</th>
+                            <th class="px-4 py-2 text-gray-600">Area</th>
+                            <th class="px-4 py-2 text-gray-600">Producto</th>
                             <th class="px-4 py-2 text-gray-600">Cantidad</th>
-                            <th class="px-4 py-2 text-gray-600">Fecha</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="px-4 py-2">Administración</td>
-                            <td class="px-4 py-2">Plumas</td>
-                            <td class="px-4 py-2">120</td>
-                            <td class="px-4 py-2">20/01/2025</td>
+                            <td class="px-4 py-2">Computadoras</td>
+                            <td class="px-4 py-2">2</td>
                         </tr>
                         <!-- Añadir más filas dinámicas -->
                     </tbody>
@@ -910,30 +109,29 @@
             <div class="p-4 bg-white rounded-lg shadow">
                 <h3 class="mb-4 text-xl font-bold text-gray-700">Alertas de Inventario</h3>
                 <ul>
-                    <li class="py-2 text-gray-700">Papel Bond: <span class="font-bold text-red-600">Bajo Stock</span>
-                    </li>
-                    <li class="py-2 text-gray-700">Tóner: <span class="font-bold text-yellow-600">Por reabastecer</span>
-                    </li>
-                    <li class="py-2 text-gray-700">Escritorios: <span class="font-bold text-green-600">Suficiente</span>
-                    </li>
+                    <li class="py-2 text-gray-700">Televisiones: <span class="font-bold text-red-600">Bajo Stock</span></li>
+                    <li class="py-2 text-gray-700">Tóner: <span class="font-bold text-yellow-600">Por reabastecer</span></li>
+                    <li class="py-2 text-gray-700">Escritorios: <span class="font-bold text-green-600">Suficiente</span></li>
                 </ul>
             </div>
         </div>
-</section>
-</div>
+    </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     // Inventario General Chart
     const inventoryData = {
-        labels: ['Insumos', 'Papelería', 'Activos', 'Otros'],
+      labels: ['Mobiliario y equipo', 'Equipo de proyección', 'Equipo de cómputo', 'Equipo menor', 'Dispositivos de comunicación', 'Dispositivos de audio', 'Televisiones'],
         datasets: [{
-            data: [540, 320, 230, 140],
+            data: [150, 120, 80, 95, 30, 45, 47],
             backgroundColor: [
-                'rgba(54, 162, 235, 0.7)',
-                'rgba(255, 206, 86, 0.7)',
-                'rgba(255, 99, 132, 0.7)',
-                'rgba(153, 102, 255, 0.7)'
+              'rgba(5, 40, 100, 0.9)',  
+              'rgba(255, 120, 0, 0.8)', 
+              'rgba(5, 40, 100, 0.9)',  
+              'rgba(255, 120, 0, 0.8)', 
+               'rgba(5, 40, 100, 0.9)',  
+               'rgba(255, 120, 0, 0.8)',
+              'rgba(5, 40, 100, 0.9)'
             ],
         }]
     };
@@ -946,9 +144,9 @@
 
     // Insumos Chart
     const suppliesData = {
-        labels: ['Tóner', 'Papel Bond', 'Plumas', 'Otros'],
+        labels: ['Entradas', 'Salidas'],
         datasets: [{
-            label: 'Distribución de Insumos',
+            label: 'Distribución de Souvenir',
             data: [120, 200, 300, 100],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.7)',
@@ -971,5 +169,9 @@
         options: { responsive: true }
     };
     new Chart(document.getElementById('suppliesChart'), suppliesConfig);
-</script>
+</script> 
+
+
+
+
 @endsection
