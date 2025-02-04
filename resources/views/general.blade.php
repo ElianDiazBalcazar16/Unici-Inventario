@@ -5,62 +5,63 @@
 
 <div class="main-content">
     <section class="section">
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="gap-2 px-4 pt-4">
+                    <div class="gap-2 px-4 pt-4 mb-3">
                         <h4 class="mb-3">Tabla General</h4>
                         <div class="flex flex-row place-content-between">
-                            <div class="flex gap-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-60 md:w-auto">
                                 <input type="text" id="search"
-                                    class="w-40 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-300"
+                                    class="w-auto px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-300"
                                     placeholder="Buscar ..."
                                 >
-                                <button id="Mostrar"
-                                    class="flex items-center justify-center pl-1 pr-2 border border-gray-300 rounded-md h-9 hover:bg-gray-100">
-                                    <div class="flex items-center gap-1 align-middle">
-                                        <svg class="w-6 h-6 text-gray-500" width="18" height="18" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" />
-                                            <line x1="12" y1="5" x2="12" y2="19" />
-                                            <line x1="5" y1="12" x2="19" y2="12" />
-                                        </svg>
-                                        <p class="text-sm text-gray-600">Añadir</p>
-                                    </div>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center pl-1 pr-2 font-normal border rounded-md border-slate-500 hover:no-underline h-9 hover:bg-gray-100"
-                                    onclick="exportarPDF();">
-                                    <div>
-
+                                <div class="flex w-20 md:gap-2">
+                                    <button id="Mostrar"
+                                        class="flex items-center justify-center pl-1 pr-2 border border-gray-300 rounded-md h-9 hover:bg-gray-100">
                                         <div class="flex items-center gap-1 align-middle">
-                                            <svg class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            <svg class="w-6 h-6 text-gray-500" width="18" height="18" viewBox="0 0 24 24"
+                                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" />
+                                                <line x1="12" y1="5" x2="12" y2="19" />
+                                                <line x1="5" y1="12" x2="19" y2="12" />
                                             </svg>
-                                            <p class="text-sm text-gray-600">Generar reporte</p>
+                                            <p class="text-sm text-gray-600">Añadir</p>
                                         </div>
-                                        <div class="flex items-center gap-4">
-                                        </div>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center pl-1 pr-2 font-normal border rounded-md border-slate-500 hover:no-underline h-9 hover:bg-gray-100"
-                                    onclick="exportToExcel();">
-                                    <div>
-                                        <div class="flex items-center gap-1 align-middle">
-                                            <svg class="w-6 h-6 text-green-700" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                            </svg>
-                                            <p class="text-sm text-gray-600">Generar exel</p>
-                                        </div> 
-                                </button>
+                                    </button>
+                                    <button
+                                        class="flex items-center justify-center pl-1 pr-2 font-normal border rounded-md border-slate-500 hover:no-underline h-9 hover:bg-gray-100"
+                                        onclick="exportarPDF();">
+                                        <div>
+    
+                                            <div class="flex items-center gap-1 align-middle">
+                                                <svg class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                                <p class="text-sm text-gray-600">Reporte</p>
+                                            </div>
+                                            <div class="flex items-center gap-4">
+                                            </div>
+                                    </button>
+                                    <button
+                                        class="flex items-center justify-center pl-1 pr-2 font-normal border rounded-md border-slate-500 hover:no-underline h-9 hover:bg-gray-100"
+                                        onclick="exportToExcel();">
+                                        <div>
+                                            <div class="flex items-center gap-1 align-middle">
+                                                <svg class="w-6 h-6 text-green-700" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                                <p class="text-sm text-gray-600">Excel</p>
+                                            </div> 
+                                    </button>
+                                </div>
                             </div>
-                            <div>
+                            <div class="w-60 md:w-auto">
                                 <select id="filterType"
                                     class="px-4 py-2 text-sm text-gray-700 bg-transparent border border-gray-300 rounded-lg w-30 focus:ring-2 focus:ring-blue-400 focus:outline-none">
                                     <option class="text-sm" value="">Estado</option>
@@ -90,14 +91,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="border-x border-b rounded-b-xl border-slate-300">
                         <div class="table-responsive">
                             <table class="table table-striped" id="inventoryTable">
-                                <thead>
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                     <tr>
 
                                         <th>QR</th>
                                         <th>Nomenclatura</th>
+                                        <th>Campus</th>
                                         <th>Departamento/Área</th>
                                         <th>Responsable del bien</th>
                                         <th>Marca</th>
@@ -493,7 +495,7 @@
                     tableHeaders.forEach(header => {
                         const th = document.createElement('th');
                         th.textContent = header;
-                        // th.classList.add('bg-gray-200', 'text-left', 'px-4', 'py-2');
+                        th.classList.add('px-6', 'py-3');
                         headerRow.appendChild(th);
                     });
                     
@@ -524,30 +526,30 @@
                     row.classList.add('hover:bg-gray-200');
 
                     row.innerHTML = `
-                        <td class="border relative border-gray-300">
+                        <td class="px-6 relative py-4">
                             <img 
-                                class='h-14 w-14 top-0.5 left-2 absolute' 
+                                class='h-14 w-14 top-2 left-2 absolute' 
                                 src="/storage${item.codigo}" 
                                 alt="QR"
                             >
                         </td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Nomecla}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Campus}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Area}</td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">${item.Nomecla}</td>
+                        <td class="px-6 py-4">${item.Campus}</td>
+                        <td class="px-6 py-4">${item.Area}</td>
                         
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.RB}</td>
+                        <td class="px-6 py-4">${item.RB}</td>
                         
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.marca}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.modelo}</td>
+                        <td class="px-6 py-4">${item.marca}</td>
+                        <td class="px-6 py-4">${item.modelo}</td>
                         
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.serie}</td>
-                        
-                        
+                        <td class="px-6 py-4">${item.serie}</td>
                         
                         
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.estado}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Des}</td>
-                        <td class="px-4 py-2 text-sm text-gray-600 border border-gray-300">${item.Categoria}</td>
+                        
+                        
+                        <td class="px-6 py-4">${item.estado}</td>
+                        <td class="px-6 py-4">${item.Des}</td>
+                        <td class="px-6 py-4">${item.Categoria}</td>
                         
                         
                         

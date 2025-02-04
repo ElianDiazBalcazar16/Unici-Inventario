@@ -47,9 +47,9 @@ Route::prefix('Bien')->group(function () {
 Route::prefix('Inventario')->group(function () {
     Route::get('/', [InventarioPController::class, 'index'])->name('Inv.index'); // Mostrar Generals
     Route::get('/entradas', [InventarioPController::class, 'entradas'])->name('Inv.entradas'); // Mostrar Generals
+    Route::get('/salidas', [InventarioPController::class, 'salidas'])->name('Inv.salidas'); // Mostrar Generals
     Route::put('/añadirDatoEntradas',[InventarioPController::class, 'createE'])->name('createEntrada');
     Route::put('/añadirDatoSalida',[InventarioPController::class, 'createS'])->name('createSalida');
-    Route::get('/salidas', [InventarioPController::class, 'salidas'])->name('Inv.salidas'); // Mostrar Generals
     Route::put('/añadirDato',[InventarioPController::class, 'createInv'])->name('createInv');
     Route::put('/eliminarDato/{id}',[InventarioPController::class, 'deliteInv'])->name('eliminarInv');
     Route::get('/actualizarDato/{id}',[InventarioPController::class, 'V_EditInv'])->name('EditInv');

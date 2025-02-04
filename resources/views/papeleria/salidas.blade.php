@@ -6,154 +6,199 @@
 
 <div class="main-content">
     <section class="section">
+        <div class="mt-2 bg-white rounded-lg grid grid-cols-1">
 
-        <div class="py-3 mt-4 mb-4 min-w-[400px] px-5 rounded-lg bg-slate-100 border-2 border-sky-400">
-            <h3 class="pb-4 text-2xl font-bold text-center text-sky-700">
-                Registra una nueva salida
-            </h3>
-            <form action="{{ route('createSalida') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <div class="flex gap-8 mb-3 place-content-center">
-                    <div>
-                        <h2 class="pl-2 mb-2 font-semibold text-sky-800">
-                            Codigo
-                        </h2>
-                        <input type="text" name="Codigo" id="Codigo"
-                            class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
-                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                            Descripcion
-                        </h2>
-                        <input type="text" name="Descripcion" id="Descripcion"
-                            class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
-                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                            Unidad de medida
-                        </h2>
-                        <select name="TUnidad" class="p-2 mt-2 border border-gray-300 w-60">
-                            <option value="">Tipo de medida</option>
-                            <option value="Pieza">Pieza</option>
-                            <option value="Caja">Caja</option>
-                        </select>
-                    </div>
-                    <div>
-                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                            Cantidad
-                        </h2>
-                        <input type="text" name="Cantidad" id="Cantidad"
-                            class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
-                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                            Area
-                        </h2>
-                        <input type="text" name="Area" id="Area"
-                            class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
-                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                            Nombre de quien recibe
-                        </h2>
-                        <input type="text" name="QuienR" id="QuienR"
-                            class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
-                    </div>
-                </div>
-                <div class="grid place-content-center">
-                    <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                        Observaciones
-                    </h2>
-                    <input type="text" name="Observaciones" id="Observaciones"
-                        class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-96 h-40">
-                    {{-- <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
-                        Imagen
-                    </h2>
-                    <input type="file" name="DirArchivo" id="DirArchivo" onchange="fileSelected(event)"> --}}
-                </div>
-                <button id="addItemButton" class="w-full py-2 mt-4 font-semibold rounded-lg bg-sky-700 text-slate-200">
-                    Cargar
-                    elemento </button>
-            </form>
-        </div>
+            <div class=" h-14 rounded-t-lg flex flex-row">
+                <a href="{{ route('Inv.index') }}" class="py-3 px-1 w-1/3 text-center rounded-tl-lg font-semibold bg-gray-400 text-gray-700" > General </a>
+                <a class="py-3 px-1 w-1/3 text-center bg-emerald-600 text-white" href="{{ route('Inv.entradas')}}"> Entradas </a>
+                <p class="py-3 px-1 w-1/3 text-center rounded-tr-lg bg-red-400 text-teal-100 "> Salidas </p>
+            </div>
 
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="gap-2 px-4 pt-4">
-                        <h4 class="mb-3">Historial de Salidas</h4>
-                        <div class="flex flex-row place-content-between">
-                            <div class="flex gap-2">
-                                <input type="text" id="search"
-                                    class="w-40 px-3 py-0.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-300"
-                                    placeholder="Buscar ...">
-                                <button
-                                    class="flex items-center justify-center pl-1 pr-2 font-normal border rounded-md border-slate-500 hover:no-underline h-9 hover:bg-gray-100"
-                                    onclick="exportarPDF()">
-                                    <div>
-
-                                        <div class="flex items-center gap-1 align-middle">
-                                            <svg class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                            </svg>
-                                            <p class="text-sm text-gray-600">Generar reporte</p>
-                                        </div>
-                                        <div class="flex items-center gap-4">
-                                        </div>
-                                </button>
-                            </div>
-                            <div>
-                                <select id="filterType"
-                                    class="px-4 py-2 text-sm text-gray-700 bg-transparent border border-gray-300 rounded-lg w-30 focus:ring-2 focus:ring-blue-400 focus:outline-none">
-                                    <option class="text-sm" value="">Estado</option>
-                                    <option class="text-sm" value="En_uso">En uso</option>
-                                    <option class="text-sm" value="descompuesto">Descompuesto</option>
-                                    <option class="text-sm" value="en_reparacion">En reparación</option>
-                                    <option class="text-sm" value="nuevo">Nuevo</option>
-                                </select>
-                                <select id="filterType2"
-                                    class="px-4 py-2 text-sm text-gray-700 bg-transparent border border-gray-300 rounded-lg w-30 focus:ring-2 focus:ring-blue-400 focus:outline-none">
-                                    <option class="text-sm" value="">Categoria</option>
-                                    <option class="text-sm" value="EP">Equipo de proyección</option>
-                                    <option class="text-sm" value="ME">Mobiliario y equipo</option>
-                                    <option class="text-sm" value="EC">Equipo de cómputo</option>
-                                    <option class="text-sm" value="EM">Equipo menor</option>
-                                    <option class="text-sm" value="DC">Dispositivos de comunicación</option>
-                                    <option class="text-sm" value="EA">Equipo de audio</option>
-                                    <option class="text-sm" value="TV">Televisiones</option>
-                                </select>
-                                <select id="filterType3"
-                                    class="px-4 py-2 text-sm text-gray-700 bg-transparent border border-gray-300 rounded-lg w-30 focus:ring-2 focus:ring-blue-400 focus:outline-none">
-                                    <option class="text-sm" value="">Marca Bien</option>
-                                    <option class="text-sm" value="asus">Asus</option>
-                                    <option class="text-sm" value="Cedrick Marcial Quintero">Cedrick Marcial Quintero
-                                    </option>
-                                </select>
-                            </div>
+            <div class="py-3 -mt-2 mb-4 min-w-[400px] px-5 rounded-lg bg-slate-100 border-2 border-sky-400">
+                <h3 class="pb-4 text-2xl font-bold text-center text-sky-700">
+                    Registra una nueva salida
+                </h3>
+                <form action="{{ route('createSalida') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="flex gap-8 mb-3 place-content-center">
+                        <div>
+                            <h2 class="pl-2 mb-2 font-semibold text-sky-800">
+                                Codigo
+                            </h2>
+                            <input type="text" name="Codigo" id="Codigo"
+                                class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
+                            <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                                Descripcion
+                            </h2>
+                            <input type="text" name="Descripcion" id="Descripcion"
+                                class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
+                            <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                                Unidad de medida
+                            </h2>
+                            <select name="TUnidad" class="p-2 mt-2 border border-gray-300 w-60">
+                                <option value="">Tipo de medida</option>
+                                <option value="Pieza">Pieza</option>
+                                <option value="Caja">Caja</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                                Cantidad
+                            </h2>
+                            <input type="text" name="Cantidad" id="Cantidad"
+                                class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
+                            <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                                Area
+                            </h2>
+                            <input type="text" name="Area" id="Area"
+                                class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
+                            <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                                Nombre de quien recibe
+                            </h2>
+                            <input type="text" name="QuienR" id="QuienR"
+                                class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-60">
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped" id="inventoryTable">
-                                <thead>
-                                    <tr>
-                                        <th>Codigo</th>
-                                        <th>Descripcion</th>
-                                        <th>Unidad de medida</th>
-                                        <th>Cantidad</th>
-                                        <th>Fecha</th>
-                                        <th>Area</th>
-                                        <th>Quien recibe</th>
-                                        <th>Observaciones</th>
-                                        {{-- <th>Acciones</th> --}}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                    <div class="grid place-content-center">
+                        <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                            Observaciones
+                        </h2>
+                        <input type="text" name="Observaciones" id="Observaciones"
+                            class="px-1.5 py-1 rounded-lg border-2 border-sky-500 w-96 h-40">
+                        {{-- <h2 class="pl-2 mt-1 mb-1 font-semibold text-sky-800">
+                            Imagen
+                        </h2>
+                        <input type="file" name="DirArchivo" id="DirArchivo" onchange="fileSelected(event)"> --}}
+                    </div>
+                    <button id="addItemButton" class="w-full py-2 mt-4 font-semibold rounded-lg bg-sky-700 text-slate-200">
+                        Cargar
+                        elemento </button>
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="gap-2 px-4 pt-4">
+                            <h4 class="mb-3">Historial de Salidas</h4>
+                            <div class="flex flex-row place-content-between">
+                                <div class="flex gap-2">
+                                    <input type="text" id="search"
+                                        class="w-40 px-3 py-0.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-300"
+                                        placeholder="Buscar ...">
+                                        <button
+                                        class="flex items-center justify-center pl-1 pr-2 font-normal border rounded-md border-slate-500 hover:no-underline h-9 hover:bg-gray-100"
+                                        onclick="exportarPDF()">
+                                        <div>
+        
+                                            <div class="flex items-center gap-1 align-middle">
+                                                <svg class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                                <p class="text-sm text-gray-600">Reporte</p>
+                                            </div>
+                                            <div class="flex items-center gap-4">
+                                            </div>
+                                    </button>
+                                    <button
+                                        class="flex items-center justify-center pl-1 pr-2 font-normal border rounded-md border-slate-500 hover:no-underline h-9 hover:bg-gray-100"
+                                        onclick="exportToExcel();">
+                                        <div>
+                                            <div class="flex items-center gap-1 align-middle">
+                                                <svg class="w-6 h-6 text-green-700" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                                <p class="text-sm text-gray-600">Excel</p>
+                                            </div> 
+                                    </button>
+                                </div>
+                                {{-- <div>
+                                    <select id="filterType"
+                                        class="px-4 py-2 text-sm text-gray-700 bg-transparent border border-gray-300 rounded-lg w-30 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                        <option class="text-sm" value="">Estado</option>
+                                        <option class="text-sm" value="En_uso">En uso</option>
+                                        <option class="text-sm" value="descompuesto">Descompuesto</option>
+                                        <option class="text-sm" value="en_reparacion">En reparación</option>
+                                        <option class="text-sm" value="nuevo">Nuevo</option>
+                                    </select>
+                                    <select id="filterType2"
+                                        class="px-4 py-2 text-sm text-gray-700 bg-transparent border border-gray-300 rounded-lg w-30 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                        <option class="text-sm" value="">Categoria</option>
+                                        <option class="text-sm" value="EP">Equipo de proyección</option>
+                                        <option class="text-sm" value="ME">Mobiliario y equipo</option>
+                                        <option class="text-sm" value="EC">Equipo de cómputo</option>
+                                        <option class="text-sm" value="EM">Equipo menor</option>
+                                        <option class="text-sm" value="DC">Dispositivos de comunicación</option>
+                                        <option class="text-sm" value="EA">Equipo de audio</option>
+                                        <option class="text-sm" value="TV">Televisiones</option>
+                                    </select>
+                                    <select id="filterType3"
+                                        class="px-4 py-2 text-sm text-gray-700 bg-transparent border border-gray-300 rounded-lg w-30 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                        <option class="text-sm" value="">Marca Bien</option>
+                                        <option class="text-sm" value="asus">Asus</option>
+                                        <option class="text-sm" value="Cedrick Marcial Quintero">Cedrick Marcial Quintero
+                                        </option>
+                                    </select>
+                                </div> --}}
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="inventoryTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Codigo</th>
+                                            <th>Descripcion</th>
+                                            <th>Unidad de medida</th>
+                                            <th>Cantidad</th>
+                                            <th>Fecha</th>
+                                            <th>Area</th>
+                                            <th>Quien recibe</th>
+                                            <th>Observaciones</th>
+                                            {{-- <th>Acciones</th> --}}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </section>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+    function exportToExcel() {
+        console.log('Exportando a Excel...');
+
+        const table = document.getElementById('inventoryTable'); 
+        const rows = Array.from(table.rows); // Obtener todas las filas
+        
+        // Crear una nueva tabla filtrando las columnas
+        const filteredData = rows.map(row => {
+            const cells = Array.from(row.cells);
+            return cells.slice(1, -1).map(cell => cell.innerText); // Elimina la primera y última columna
+        });
+
+        // Crear la hoja de Excel
+        const worksheet = XLSX.utils.aoa_to_sheet(filteredData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet 1");
+
+        // Descargar el archivo
+        XLSX.writeFile(workbook, 'tabla_filtrada.xlsx');
+    }
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
@@ -343,17 +388,17 @@
                     filteredInventory = filteredInventory.filter(item => item.Nomecla.includes(searchInput.value));
                 }
 
-                if (filterType.value) {
-                    filteredInventory = filteredInventory.filter(item => item.estado === filterType.value);
-                }
+                // if (filterType.value) {
+                //     filteredInventory = filteredInventory.filter(item => item.estado === filterType.value);
+                // }
 
-                if (filterType2.value) {
-                    filteredInventory = filteredInventory.filter(item => item.Categoria === filterType2.value);
-                }
+                // if (filterType2.value) {
+                //     filteredInventory = filteredInventory.filter(item => item.Categoria === filterType2.value);
+                // }
 
-                if (filterType3.value) {
-                    filteredInventory = filteredInventory.filter(item => item.marca === filterType3.value);
-                }
+                // if (filterType3.value) {
+                //     filteredInventory = filteredInventory.filter(item => item.marca === filterType3.value);
+                // }
 
                 filteredInventory.forEach(item => {
                     const row = document.createElement('tr');
